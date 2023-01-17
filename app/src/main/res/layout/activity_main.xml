@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="14dp"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_cow"
+            android:layout_marginBottom="18dp"
+            android:layout_height="200dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Email"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:hint="Contraseña"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:layout_width="match_parent"
+                android:id="@+id/edt_password"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <Switch
+                android:id="@+id/switch_credential"
+                android:layout_width="wrap_content"
+                android:outlineSpotShadowColor="@color/black"
+                android:outlineAmbientShadowColor="@color/teal_700"
+                android:layout_height="match_parent"
+                tools:targetApi="p"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:text="Recordar credenciales"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                android:layout_width="wrap_content"
+                android:text="No tienes cuenta?"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="0dp"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                android:layout_width="wrap_content"
+                android:text="Regístrate"
+                android:id="@+id/btn_register"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textAlignment="center"
+                app:cornerRadius="12dp"
+                android:layout_weight="1"
+                android:shadowColor="@color/black"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@color/white"
+                android:id="@+id/btn_login"
+                android:text="INICIAR SESIÓN"
+                android:layout_height="60dp"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/progress"
+                android:layout_marginStart="5dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/purple_500"
+                android:layout_height="match_parent"
+                tools:ignore="UnusedAttribute" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
