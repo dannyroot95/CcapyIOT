@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "714743842176",
+    "firebase_url": "https://ccapy-2bc76-default-rtdb.firebaseio.com",
+    "project_id": "ccapy-2bc76",
+    "storage_bucket": "ccapy-2bc76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714743842176:android:d14948859fb4686026ed65",
+        "android_client_info": {
+          "package_name": "com.electric.ccapy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714743842176-vmo15cv176hhf4bojfut3aoivda1se1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.electric.ccapy",
+            "certificate_hash": "6bf32ca28e6f43969c9d944ea8fc5c6ce4b70b21"
+          }
+        },
+        {
+          "client_id": "714743842176-a5gvet82amr737kr9b8ejfabb5ff8idf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsaU13enTYMvOWjoByQ1N-9igaRbLcAIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714743842176-a5gvet82amr737kr9b8ejfabb5ff8idf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

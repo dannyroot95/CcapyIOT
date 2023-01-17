@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Ccapy"
         tools:targetApi="31">
         <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.RegisterActivity"
             android:exported="false" />
         <activity

@@ -58,6 +58,7 @@ class DNIProvider {
                 ).show()
                 binding.edtDni.isEnabled = true
                 binding.edtFullname.setText("")
+                binding.edtDni.setText("")
             }
         })
     }
