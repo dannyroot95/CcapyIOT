@@ -78,6 +78,7 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:gravity="right"
+            android:id="@+id/ln_register"
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
 

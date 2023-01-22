@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".UI.SynchronizeDeviceActivity">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:id="@+id/img_scan"
+        android:src="@drawable/scan"
+        android:foreground="?selectableItemBackground"
+        android:layout_height="250dp"/>
+
+    <com.electric.ccapy.Utils.PoppinsTextviewLight
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:textSize="16dp"
+        android:text="Escanea tu dispositivo"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

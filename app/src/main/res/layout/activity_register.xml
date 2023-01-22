@@ -174,14 +174,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:id="@+id/ln_access"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_height="wrap_content">
 
                     <com.electric.ccapy.Utils.PoppinsTextviewRegular
                         android:layout_width="wrap_content"
-                        android:text="Ya tienes cuenta?"
+                        android:text="Ya tienes una cuenta?"
                         android:layout_height="wrap_content"/>
 
                     <View

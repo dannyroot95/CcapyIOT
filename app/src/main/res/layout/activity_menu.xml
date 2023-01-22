@@ -1,9 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
     android:layout_height="match_parent"
     tools:context=".UI.MenuActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:src="@drawable/ic_list"
+            android:layout_height="40dp"/>
+
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="Ccappy : Monitoring Home"
+            android:layout_height="40dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:src="@drawable/ic_bold"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ln_loader"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Obteniendo datos"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ln_all_data"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+    <com.electric.ccapy.Utils.PoppinsTextviewLight
+        android:layout_width="match_parent"
+        android:id="@+id/txtTime"
+        android:gravity="right"
+        android:textSize="11sp"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/card_status"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                android:layout_width="wrap_content"
+                android:id="@+id/txt_current_date"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                android:layout_width="wrap_content"
+                android:text="Energía actual"
+                android:layout_marginTop="10dp"
+                android:textSize="19dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <com.electric.ccapy.Utils.PoppinsTextviewBold
+                    android:layout_width="wrap_content"
+                    android:text="20.6"
+                    android:id="@+id/txtEnergy"
+                    android:textSize="35dp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"/>
+
+                <com.electric.ccapy.Utils.PoppinsTextviewBold
+                    android:layout_width="wrap_content"
+                    android:text=" Kw/h"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="wrap_content"
+                android:text="220 V"
+                android:id="@+id/txtVoltage"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                android:layout_width="wrap_content"
+                android:text="Mi dispositivo"
+                android:textSize="16dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="ScrollViewCount,UselessParent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/card"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/devicon"
+                        android:layout_height="70dp"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="N° de serie"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:id="@+id/txt_chip"
+                        android:textSize="13dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="0dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/card"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/wattsicon"
+                        android:layout_height="70dp"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="Potencia"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:id="@+id/txt_watts"
+                        android:textSize="13dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_height="0dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/card"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/ampereicon"
+                        android:layout_height="70dp"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="Amperios"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:id="@+id/txt_ampere"
+                        android:textSize="13dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="0dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/card"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/frecuencyicon"
+                        android:layout_height="70dp"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="Frecuencia"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:id="@+id/txt_frecuency"
+                        android:layout_marginBottom="8dp"
+                        android:textSize="13dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="Salir"
+            android:visibility="gone"
+            android:id="@+id/btn_logout"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

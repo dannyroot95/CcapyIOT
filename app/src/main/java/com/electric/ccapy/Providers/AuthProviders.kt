@@ -7,10 +7,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.NotificationManagerCompat
 import com.electric.ccapy.MainActivity
+import com.electric.ccapy.Models.Device
 import com.electric.ccapy.Models.Token
 import com.electric.ccapy.Models.Users
 import com.electric.ccapy.UI.MenuActivity
 import com.electric.ccapy.UI.RegisterActivity
+import com.electric.ccapy.UI.SynchronizeDeviceActivity
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityMainBinding
@@ -28,6 +30,9 @@ class AuthProviders {
     fun login(email : String , password : String, activity : MainActivity , binding : ActivityMainBinding){
         binding.progress.visibility = View.VISIBLE
         binding.btnLogin.visibility = View.GONE
+        binding.lnRegister.visibility = View.GONE
+        binding.edtCode.isEnabled = false
+        binding.edtPassword.isEnabled = false
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {response ->
             if(response.isSuccessful){
                 val id : String = FirebaseAuth.getInstance().currentUser!!.uid
@@ -37,23 +42,33 @@ class AuthProviders {
                         if(users!!.type == Constants.CLIENT){
                             val db = TinyDB(activity)
                             db.putObject(Constants.USER,users)
+                            db.putObject(Constants.ID_CHIP,users.current_device_id)
                             //createToken(id)
                             activity.startActivity(Intent(activity,MenuActivity::class.java))
                         }else{
                             auth.signOut()
                             binding.progress.visibility = View.GONE
                             binding.btnLogin.visibility = View.VISIBLE
+                            binding.lnRegister.visibility = View.VISIBLE
+                            binding.edtCode.isEnabled = true
+                            binding.edtPassword.isEnabled = true
                             Toast.makeText(activity,"Usuario no permitido!", Toast.LENGTH_SHORT).show()
                         }
                     }else{
                         binding.progress.visibility = View.GONE
                         binding.btnLogin.visibility = View.VISIBLE
+                        binding.lnRegister.visibility = View.VISIBLE
+                        binding.edtCode.isEnabled = true
+                        binding.edtPassword.isEnabled = true
                         Toast.makeText(activity,"No existe el usuario!",Toast.LENGTH_SHORT).show()
                     }
                 }
             }else{
                 binding.progress.visibility = View.GONE
                 binding.btnLogin.visibility = View.VISIBLE
+                binding.lnRegister.visibility = View.VISIBLE
+                binding.edtCode.isEnabled = true
+                binding.edtPassword.isEnabled = true
                 Toast.makeText(activity,"Error, revise las credenciales",Toast.LENGTH_SHORT).show()
             }
         }
@@ -89,7 +104,7 @@ class AuthProviders {
                         data.id = id
                         db.collection(Constants.USERS).document(id).set(data)
                         dbTiny.putObject(Constants.USER,data)
-                        Toast.makeText(activity,"REGISTRADO!",Toast.LENGTH_SHORT).show()
+                        activity.startActivity(Intent(activity,SynchronizeDeviceActivity::class.java))
                         activity.finish()
                     }
                 }
@@ -109,6 +124,12 @@ class AuthProviders {
 
     private fun getUsersDetails() : DocumentReference {
         return db.collection(Constants.USERS).document(getCurrentUserID())
+    }
+
+    fun updateProfileDevice(data : Users,data2 : Device){
+        db.collection(Constants.USERS).document(getCurrentUserID()).set(data)
+        db.collection(Constants.DEVICES).document(getCurrentUserID()).set(data2)
+        createToken(getCurrentUserID())
     }
 
     private fun getCurrentUserID(): String {
@@ -139,8 +160,10 @@ class AuthProviders {
         auth.signOut()
         val db = TinyDB(activity)
         db.remove(Constants.USER)
+        db.remove(Constants.ID_CHIP)
+        db.remove(Constants.KEY_CURRENT_DATA)
+        db.remove(Constants.CACHE_CURRENT_DATA)
         val intent = Intent(activity, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         activity.startActivity(intent)
         activity.finish()
     }
