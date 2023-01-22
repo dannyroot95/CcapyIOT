@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.electric.ccapy.Models.DataDevice;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -456,8 +457,8 @@ public void putObject(String key, Object obj){
     	putString(key, gson.toJson(obj));
     }
 
-/*
-    public void putListObjectIncidents(String key, ArrayList<Incidents> objArray){
+
+    public void putListObjectRegistersFromDevice(String key, ArrayList<DataDevice> objArray){
     	checkForNullKey(key);
    	Gson gson = new Gson();
    	ArrayList<String> objStrings = new ArrayList<String>();
@@ -467,20 +468,18 @@ public void putObject(String key, Object obj){
    	putListString(key, objStrings);
     }
 
-    public ArrayList<Incidents> getListObjectIncidents(String key, Class<Incidents> java){
+    public ArrayList<DataDevice> getListObjectRegistersFromDevice(String key, Class<DataDevice> java){
         Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
-        ArrayList<Incidents> objects =  new ArrayList<Incidents>();
+        ArrayList<DataDevice> objects =  new ArrayList<DataDevice>();
 
         for(String jObjString : objStrings){
-            Incidents value  = gson.fromJson(jObjString,  Incidents.class);
+            DataDevice value  = gson.fromJson(jObjString,  DataDevice.class);
             objects.add(value);
         }
         return objects;
     }
-
-*/
 
     /**
      * Remove SharedPreferences item with 'key'
