@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".UI.DeviceActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:src="@drawable/box_device"
+        android:layout_height="200dp"/>
+    <com.electric.ccapy.Utils.PoppinsTextviewLight
+        android:layout_width="wrap_content"
+        android:id="@+id/txt_device_id"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="300dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textAlignment="center"
+        app:cornerRadius="12dp"
+        android:layout_marginTop="30dp"
+        android:drawableEnd="@drawable/ic_qr"
+        android:layout_gravity="center"
+        android:shadowColor="@color/black"
+        android:backgroundTint="@color/purple_700"
+        android:textColor="@color/white"
+        android:id="@+id/btn_register"
+        android:text="Sincronizar nuevo dispositivo"
+        android:layout_height="60dp"/>
+
+</LinearLayout>

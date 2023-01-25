@@ -35,7 +35,7 @@ class AuthProviders {
         binding.edtPassword.isEnabled = false
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {response ->
             if(response.isSuccessful){
-                val id : String = FirebaseAuth.getInstance().currentUser!!.uid
+                //val id : String = FirebaseAuth.getInstance().currentUser!!.uid
                 getUsersDetails().get().addOnSuccessListener {
                     if(it.exists()){
                         val users = it.toObject(Users::class.java)

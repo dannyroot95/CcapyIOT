@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="12dp"
+    android:layout_height="match_parent"
+    tools:context=".UI.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#EAEDED"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:src="@drawable/icon_user"
+                />
+
+            <ImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/im_change_photo"
+                android:layout_marginTop="-40dp"
+                android:layout_marginStart="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:src="@drawable/ic_search_image"
+                android:contentDescription="TODO"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:text="Foto de perfil"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Nombre Completo"
+            app:startIconDrawable="@drawable/ic_person"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="DNI"
+            android:layout_marginTop="15dp"
+            app:startIconDrawable="@drawable/ic_dni"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_dni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="8"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Teléfono"
+            app:startIconDrawable="@drawable/ic_phone"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_phone"
+                android:maxLength="9"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Dirección"
+            app:startIconDrawable="@drawable/ic_streetview"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_address"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Correo electrónico"
+            android:layout_marginTop="15dp"
+            app:startIconDrawable="@drawable/ic_mail"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_email"
+                android:enabled="false"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textAlignment="center"
+            app:cornerRadius="12dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:shadowColor="@color/black"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:id="@+id/btn_update_data"
+            android:text="Actualizar Datos"
+            android:layout_height="60dp"/>
+
+</LinearLayout>
+</LinearLayout>

@@ -31,7 +31,7 @@ class SynchronizeDeviceActivity : AppCompatActivity() {
     private fun initScanner(){
         val integrator = IntentIntegrator(this)
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
-        integrator.setPrompt("Scaneando...")
+        integrator.setPrompt("Escaneando...")
         integrator.captureActivity = CaptureCodeBar::class.java
         integrator.setOrientationLocked(false)
         integrator.setBeepEnabled(true)
@@ -48,6 +48,8 @@ class SynchronizeDeviceActivity : AppCompatActivity() {
                 val dbTiny = TinyDB(this)
                 val objUser = TinyDB(this).getObject(Constants.USER, Users::class.java)
                 val dataDevice = Device(scanResult.contents,objUser.id,objUser.fullname,System.currentTimeMillis())
+                dbTiny.remove(Constants.ID_CHIP)
+                dbTiny.remove(Constants.KEY_CURRENT_DATA)
                 objUser.hasDevice = true
                 dbTiny.putObject(Constants.USER,objUser)
                 dbTiny.putString(Constants.ID_CHIP,scanResult.contents)

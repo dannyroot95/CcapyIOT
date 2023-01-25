@@ -1,9 +1,13 @@
 package com.electric.ccapy.UI
 
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.electric.ccapy.Models.DataDevice
 import com.electric.ccapy.Models.Users
 import com.electric.ccapy.Providers.AuthProviders
@@ -12,20 +16,40 @@ import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.CurrentDateTime
 import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityMenuBinding
+import com.electric.ccapy.databinding.DialogOptionsBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMenuBinding
+    private lateinit var optionsBinding : DialogOptionsBinding
+    private lateinit var dialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
+        optionsBinding = DialogOptionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        dialog = Dialog(this)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(0))
+        dialog.setContentView(optionsBinding.root)
 
         setupUI()
 
-        binding.btnLogout.setOnClickListener {
+        binding.btnProfile.setOnClickListener {
+            startActivity(Intent(this,ProfileActivity::class.java))
+        }
+        binding.btnOptions.setOnClickListener {
+            dialog.show()
+        }
+        optionsBinding.closeDialog.setOnClickListener {
+            dialog.dismiss()
+        }
+        optionsBinding.cvLogout.setOnClickListener {
             AuthProviders().logout(this)
+        }
+        optionsBinding.cvDevice.setOnClickListener {
+            startActivity(Intent(this,DeviceActivity::class.java))
         }
 
     }

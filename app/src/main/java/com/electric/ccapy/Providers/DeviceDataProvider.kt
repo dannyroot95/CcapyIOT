@@ -2,9 +2,13 @@ package com.electric.ccapy.Providers
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.electric.ccapy.Models.DataDevice
 import com.electric.ccapy.UI.MenuActivity
+import com.electric.ccapy.UI.SynchronizeDeviceActivity
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityMenuBinding
@@ -25,7 +29,6 @@ class DeviceDataProvider {
 
     fun getData(activity : MenuActivity , binding : ActivityMenuBinding){
         val idChip = TinyDB(activity).getString(Constants.ID_CHIP).replace("\"","")
-
         db.child(Constants.DEVICES).child(idChip).child(Constants.CURRENT_DATA).addValueEventListener(object : ValueEventListener{
             @SuppressLint("SetTextI18n", "SimpleDateFormat")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -45,6 +48,10 @@ class DeviceDataProvider {
                     binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
                     binding.lnLoader.visibility = View.GONE
                     binding.lnAllData.visibility = View.VISIBLE
+                }else{
+                    Toast.makeText(activity,"NO EXISTE EL DISPOSITIVO",Toast.LENGTH_SHORT).show()
+                    activity.startActivity(Intent(activity,SynchronizeDeviceActivity::class.java))
+                    activity.finish()
                 }
             }
 
