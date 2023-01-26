@@ -49,7 +49,7 @@ class DeviceDataProvider {
                     binding.lnLoader.visibility = View.GONE
                     binding.lnAllData.visibility = View.VISIBLE
                 }else{
-                    Toast.makeText(activity,"NO EXISTE EL DISPOSITIVO",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity,"NO EXISTE EL DISPOSITIVO!",Toast.LENGTH_SHORT).show()
                     activity.startActivity(Intent(activity,SynchronizeDeviceActivity::class.java))
                     activity.finish()
                 }

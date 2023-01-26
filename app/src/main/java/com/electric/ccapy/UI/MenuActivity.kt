@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.view.Window
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.electric.ccapy.Models.DataDevice
-import com.electric.ccapy.Models.Users
 import com.electric.ccapy.Providers.AuthProviders
 import com.electric.ccapy.Providers.DeviceDataProvider
 import com.electric.ccapy.Utils.Constants
@@ -41,6 +41,9 @@ class MenuActivity : AppCompatActivity() {
         }
         binding.btnOptions.setOnClickListener {
             dialog.show()
+            dialog.setCancelable(false)
+            val window: Window = dialog.window!!
+            window.setLayout(950, 1400)
         }
         optionsBinding.closeDialog.setOnClickListener {
             dialog.dismiss()

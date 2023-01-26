@@ -50,7 +50,6 @@
                 android:layout_height="wrap_content">
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -59,6 +58,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_device"
                 android:foreground="?selectableItemBackground"
+                app:cardCornerRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -92,6 +92,7 @@
                 android:id="@+id/cv_enable"
                 android:foreground="?selectableItemBackground"
                 android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
@@ -153,10 +154,77 @@
 
             </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_config"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/gradient">
+
+                        <com.electric.ccapy.Utils.PoppinsTextviewLight
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Configuración"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_marginEnd="5dp"
+                            android:src="@drawable/config"
+                            android:layout_height="100dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_location"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/gradient">
+
+                        <com.electric.ccapy.Utils.PoppinsTextviewLight
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Ubicación"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_marginEnd="5dp"
+                            android:src="@drawable/location"
+                            android:layout_height="100dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_incidents"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
@@ -190,6 +258,7 @@
                 android:foreground="?selectableItemBackground"
                 android:layout_width="match_parent"
                 android:clickable="true"
+                app:cardCornerRadius="10dp"
                 android:focusable="true"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content">
