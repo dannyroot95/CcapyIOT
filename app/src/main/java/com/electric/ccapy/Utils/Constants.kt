@@ -24,5 +24,11 @@ object Constants {
     const val KEY_CURRENT_DATA = "key_current_data"
     const val STRING_CURRENT_DATA = "string_current_data"
     const val SUCCESS = "success"
+    const val KEY_CONFIG_DATA = "key_config_data"
+    const val STRING_CONFIG_DATA = "string_config_data"
+    const val CONFIG = "config"
+    const val LOCATION = "location"
+    const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
+    const val COUNTER = "counter"
 
 }

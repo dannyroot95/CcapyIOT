@@ -18,14 +18,18 @@ import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityMainBinding
 import com.electric.ccapy.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 
 class AuthProviders {
 
     var auth : FirebaseAuth = FirebaseAuth.getInstance()
     var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+    var rf : DatabaseReference = Firebase.database.reference
 
     fun login(email : String , password : String, activity : MainActivity , binding : ActivityMainBinding){
         binding.progress.visibility = View.VISIBLE
@@ -132,7 +136,7 @@ class AuthProviders {
         createToken(getCurrentUserID())
     }
 
-    private fun getCurrentUserID(): String {
+    fun getCurrentUserID(): String {
         // An Instance of currentUser using FirebaseAuth
         val currentUser = FirebaseAuth.getInstance().currentUser
 
@@ -162,6 +166,9 @@ class AuthProviders {
         db.remove(Constants.USER)
         db.remove(Constants.ID_CHIP)
         db.remove(Constants.KEY_CURRENT_DATA)
+        db.remove(Constants.CONFIG)
+        db.remove(Constants.LOCATION)
+        db.remove(Constants.KEY_CONFIG_DATA)
         db.remove(Constants.CACHE_CURRENT_DATA)
         val intent = Intent(activity, MainActivity::class.java)
         activity.startActivity(intent)

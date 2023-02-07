@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".UI.ConfigActivity">
+
+    <com.electric.ccapy.Utils.PoppinsTextviewLight
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="Configuraciones"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="22dp"
+        android:layout_height="wrap_content">
+
+
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="match_parent"
+            android:textColor="#FC0000"
+            android:text="**Nota : Los datos deben ser de su último recibo del mes para evitar errores en su próxima factura"
+            android:layout_height="wrap_content"/>
+
+        <com.electric.ccapy.Utils.PoppinsTextviewBold
+            android:layout_width="match_parent"
+            android:text="Dispositivo"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BDC3C7"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Lectura actual de factura (kw/h)"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_actual_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:inputType="numberDecimal"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Lectura actual de medidor (kw/h)"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_actual_med"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:inputType="numberDecimal"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:text="Fecha de entrega de su ultimo recibo"
+            android:layout_height="wrap_content"/>
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"/>
+
+        <com.electric.ccapy.Utils.PoppinsTextviewBold
+            android:layout_width="match_parent"
+            android:text="Limites y notificaciones"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BDC3C7"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:hint="Limite de consumo (kw/h)"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsEditText
+                android:id="@+id/edt_limit"
+                app:suffixText="kW/h"
+                app:suffixTextColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:inputType="numberDecimal"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="28dp"
+            android:layout_height="wrap_content">
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:id="@+id/sw_limit"
+                android:layout_height="wrap_content"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:text="Activar notificación de límite de consumo"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:id="@+id/sw_limit_it"
+                android:layout_height="wrap_content"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:text="Activar notificación de consumo inteligente"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textAlignment="center"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:shadowColor="@color/black"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"
+            android:id="@+id/btn_save"
+            android:text="Guardar configuración"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
