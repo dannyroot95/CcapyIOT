@@ -30,5 +30,7 @@ object Constants {
     const val LOCATION = "location"
     const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
     const val COUNTER = "counter"
+    const val METRICS = "metrics"
+    const val DATA = "data"
 
 }

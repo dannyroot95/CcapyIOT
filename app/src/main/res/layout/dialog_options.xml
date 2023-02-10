@@ -89,7 +89,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:id="@+id/cv_enable"
+                android:id="@+id/cv_metrics"
                 android:foreground="?selectableItemBackground"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
@@ -105,7 +105,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:text="Métricas"
+                        android:text="Tarifario"
                         android:layout_gravity="center"
                         android:textColor="@color/white"
                         android:layout_height="wrap_content"/>
@@ -219,6 +219,40 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_invoice"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:foreground="?selectableItemBackground"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/gradient">
+
+                        <com.electric.ccapy.Utils.PoppinsTextviewLight
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Mi factura"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_marginEnd="5dp"
+                            android:src="@drawable/char1"
+                            android:layout_height="100dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_incidents"

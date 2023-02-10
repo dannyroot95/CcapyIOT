@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".UI.MetricsActivity">
+
+    <com.electric.ccapy.Utils.PoppinsTextviewLight
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="Tarifario"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/progress"
+        android:layout_height="0dp"
+        tools:ignore="NestedWeights">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="wrap_content"
+            android:text="Obteniendo datos del servidor"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+
+        android:id="@+id/ln_show"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="12dp"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue"
+                    android:layout_height="wrap_content">
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="kW/h"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:text="Detalle de facturación"
+                        android:textSize="12dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:src="@drawable/kwh_icon"
+                        android:layout_height="100dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_marginRight="28dp"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:text="Precio"
+                                android:textSize="18dp"
+                                android:layout_height="wrap_content"/>
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:text="S/0.00"
+                                android:id="@+id/price_kwh"
+                                android:textSize="22dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue"
+                    android:layout_height="wrap_content">
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="Alicuota"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:text="Detalle de facturación"
+                        android:textSize="12dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:src="@drawable/alicuota"
+                        android:layout_height="100dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_marginRight="28dp"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:text="Precio"
+                                android:textSize="18dp"
+                                android:layout_height="wrap_content"/>
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:text="S/0.00"
+                                android:id="@+id/alicuota"
+                                android:gravity="right"
+                                android:textSize="22dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue"
+                    android:layout_height="wrap_content">
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="Intereses"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:text="Detalle de facturación"
+                        android:textSize="12dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:src="@drawable/interest"
+                        android:layout_height="100dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_marginRight="28dp"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:text="Precio"
+                                android:textSize="18dp"
+                                android:layout_height="wrap_content"/>
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:text="S/0.00"
+                                android:id="@+id/interes"
+                                android:gravity="right"
+                                android:textSize="22dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue"
+                    android:layout_height="wrap_content">
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="BT5B - No residencial"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:text="Detalle de facturación"
+                        android:textSize="12dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:src="@drawable/homr"
+                        android:layout_height="100dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_marginRight="28dp"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:text="Precio"
+                                android:textSize="18dp"
+                                android:layout_height="wrap_content"/>
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:text="S/0.00"
+                                android:id="@+id/no_residential"
+                                android:gravity="right"
+                                android:textSize="22dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue"
+                    android:layout_height="wrap_content">
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="BT5B - Residencial"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:text="Detalle de facturación"
+                        android:textSize="12dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:src="@drawable/residential"
+                        android:layout_height="100dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_marginRight="28dp"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:text="Precio"
+                                android:textSize="18dp"
+                                android:layout_height="wrap_content"/>
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:text="S/0.00"
+                                android:id="@+id/residential"
+                                android:gravity="right"
+                                android:textSize="22dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue"
+                    android:layout_height="wrap_content">
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewBold
+                        android:layout_width="wrap_content"
+                        android:text="Mantenimiento y Reconexión"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <com.electric.ccapy.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:text="Detalle de facturación"
+                        android:textSize="12dp"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:src="@drawable/reconecct"
+                        android:layout_height="100dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_marginRight="28dp"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:text="Precio"
+                                android:textSize="18dp"
+                                android:layout_height="wrap_content"/>
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:text="S/0.00"
+                                android:id="@+id/reconecct"
+                                android:gravity="right"
+                                android:textSize="22dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

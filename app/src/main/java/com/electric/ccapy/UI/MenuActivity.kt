@@ -66,6 +66,9 @@ class MenuActivity : AppCompatActivity() , LocationListener {
         optionsBinding.cvConfig.setOnClickListener {
             startActivity(Intent(this,ConfigActivity::class.java))
         }
+        optionsBinding.cvMetrics.setOnClickListener {
+            startActivity(Intent(this,MetricsActivity::class.java))
+        }
         optionsBinding.cvLocation.setOnClickListener {
             if(TinyDB(this).getObject(Constants.LOCATION,Location::class.java) != null){
                 startActivity(Intent(this,MapsActivity::class.java))
