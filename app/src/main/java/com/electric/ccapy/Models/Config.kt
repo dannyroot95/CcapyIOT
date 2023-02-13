@@ -8,5 +8,6 @@ data class Config(
     val notify_limit : Boolean = false,
     val notify_intelligent : Boolean = false,
     val is_reset : String = "",
-    val counter : Int = 0
+    val counter : Int = 0,
+    val type_home : String = ""
 )

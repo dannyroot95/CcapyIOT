@@ -3,6 +3,9 @@ package com.electric.ccapy.Providers
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.Toast
+import com.electric.ccapy.Models.Config
+import com.electric.ccapy.Models.DataDevice
+import com.electric.ccapy.Models.Metrics
 import com.electric.ccapy.UI.MetricsActivity
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.databinding.ActivityMetricsBinding
@@ -16,12 +19,16 @@ class MetricsProvider {
     fun getMetrics(activity: MetricsActivity, binding: ActivityMetricsBinding){
         db.collection(Constants.METRICS).document(Constants.DATA).get().addOnSuccessListener {snapshot ->
             if(snapshot.exists()){
-                binding.priceKwh.text = "S/"+snapshot["price_kwh"].toString()
-                binding.alicuota.text = "S/"+snapshot["alicuota"].toString()
-                binding.interes.text = "S/"+snapshot["interes"].toString()
-                binding.noResidential.text = "S/"+snapshot["price_no_residential"].toString()
-                binding.residential.text = "S/"+snapshot["price_residential"].toString()
-                binding.reconecct.text = "S/"+snapshot["reconecct"].toString()
+                val metrics = snapshot.toObject(Metrics::class.java)!!
+                binding.priceKwh.text = "S/"+metrics.price_kwh
+                binding.alicuota.text = "S/"+metrics.alicuota
+                binding.interes.text = "S/"+metrics.interes
+                binding.noResidential.text = "S/"+metrics.price_no_residential
+                binding.residential.text = "S/"+metrics.price_residential_30
+                binding.residential31.text = "S/"+metrics.price_residential_30
+                binding.residential140.text = "S/"+metrics.price_residential_140
+                binding.reconecct.text = "S/"+metrics.reconecct
+                binding.law.text = "S/"+metrics.law_28749
                 binding.progress.visibility = View.GONE
                 binding.lnShow.visibility = View.VISIBLE
             }else{

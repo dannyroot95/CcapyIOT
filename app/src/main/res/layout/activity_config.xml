@@ -85,6 +85,26 @@
             android:calendarViewShown="false"
             android:datePickerMode="spinner"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <com.electric.ccapy.Utils.PoppinsTextviewSemiBold
+                android:layout_width="wrap_content"
+                android:text="Tipo de hogar :"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:spinnerMode="dialog"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
         <com.electric.ccapy.Utils.PoppinsTextviewBold
             android:layout_width="match_parent"
             android:text="Limites y notificaciones"
