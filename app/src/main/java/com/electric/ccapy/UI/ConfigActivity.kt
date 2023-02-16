@@ -42,21 +42,54 @@ class ConfigActivity : AppCompatActivity() {
             dayInvoice = datePicker.dayOfMonth.toString()+"/"+(datePicker.month+1).toString()+"/"+datePicker.year.toString()
         }
 
+        binding.swLimit.setOnCheckedChangeListener { _, b ->
+            if(!b){
+                binding.edtLimit.setText("")
+            }
+        }
     }
 
     private fun saveConfig(){
 
         val actualRead = binding.edtActualRead.text.toString()
         val actualMedRead = binding.edtActualMed.text.toString()
+        val limit = binding.edtLimit.text.toString()
+        val switchLimit = binding.swLimit.isChecked
+        val switchIt = binding.swLimitIt.isChecked
 
         if(actualMedRead != "" && actualRead != "" && dayInvoice != "" && typeHome != "" && typeHome != "Seleccione una opción..."){
 
             if(actualMedRead.toFloat() > actualRead.toFloat()){
-                val db = TinyDB(this)
-                val config = Config(actualRead,actualMedRead,"",dayInvoice,false,false,"false",0,typeHome)
-                db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
-                db.putObject(Constants.CONFIG,config)
-                DeviceDataProvider().setConfigData(config,this)
+                if(switchLimit){
+                    if(limit != ""){
+                        val db = TinyDB(this)
+                        val config = Config(actualRead,actualMedRead,limit,dayInvoice,switchLimit,switchIt,"false",0,typeHome)
+                        db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
+                        db.putObject(Constants.CONFIG,config)
+                        DeviceDataProvider().setConfigData(config,this)
+                    }else{
+                        if(limit != ""){
+                            if(switchLimit){
+                                val db = TinyDB(this)
+                                val config = Config(actualRead,actualMedRead,limit,dayInvoice,switchLimit,switchIt,"false",0,typeHome)
+                                db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
+                                db.putObject(Constants.CONFIG,config)
+                                DeviceDataProvider().setConfigData(config,this)
+                            }else{
+                                Toast.makeText(this,"Active la opción : Notificacion de límite de consumo!",Toast.LENGTH_SHORT).show()
+                            }
+                        }else{
+                            Toast.makeText(this,"Ingrese un limite en kw/h",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }else{
+                    val db = TinyDB(this)
+                    val config = Config(actualRead,actualMedRead,"",dayInvoice,false,switchIt,"false",0,typeHome)
+                    db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
+                    db.putObject(Constants.CONFIG,config)
+                    DeviceDataProvider().setConfigData(config,this)
+                }
+
             }else{
                 Toast.makeText(this,"La lectura del medidor debe ser mayor a la lectura de la factura!",Toast.LENGTH_SHORT).show()
             }
@@ -70,11 +103,13 @@ class ConfigActivity : AppCompatActivity() {
         val cConfig = TinyDB(this).getString(Constants.KEY_CONFIG_DATA)
         if (cConfig != ""){
             val config = TinyDB(this).getObject(Constants.CONFIG,Config::class.java)!!
-            val value : Int
             binding.edtActualRead.setText(config.actual_read)
             binding.edtActualMed.setText(config.actual_med_read)
+            binding.edtLimit.setText(config.limit)
+            binding.swLimit.isChecked = config.notify_limit
+            binding.swLimitIt.isChecked = config.notify_intelligent
 
-            value = if(config.type_home == "Residencial"){ 1 }else{ 2 }
+            val value : Int = if(config.type_home == "Residencial"){ 1 }else{ 2 }
 
             val adapterSpinner =
                 ArrayAdapter.createFromResource(this,  R.array.type_home,

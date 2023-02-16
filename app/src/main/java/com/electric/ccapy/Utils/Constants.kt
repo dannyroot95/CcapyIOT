@@ -32,5 +32,7 @@ object Constants {
     const val COUNTER = "counter"
     const val METRICS = "metrics"
     const val DATA = "data"
+    const val KEY_REGISTERS = "key_registers"
+    const val STRING_REGISTERS = "string_registers"
 
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:src="@drawable/item_voltage"
+                android:layout_height="60dp"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                android:id="@+id/it_voltage"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="v"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content">
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:text="Fecha"
+                android:id="@+id/it_date"
+                android:layout_height="wrap_content"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_ampere"
+                android:textStyle="bold"
+                android:text="A"
+                android:layout_height="wrap_content"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_power"
+                android:text="W"
+                android:layout_height="wrap_content"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_energy"
+                android:text="kWh"
+                android:layout_height="wrap_content"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_frequency"
+                android:text="Hz"
+                android:layout_height="wrap_content"/>
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_pf"
+                android:text="Pf"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

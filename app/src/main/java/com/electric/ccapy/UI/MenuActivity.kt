@@ -76,6 +76,9 @@ class MenuActivity : AppCompatActivity() , LocationListener {
                 Toast.makeText(this,"No disponible!",Toast.LENGTH_SHORT).show()
             }
         }
+        optionsBinding.cvRegisters.setOnClickListener {
+            startActivity(Intent(this,RegistersActivity::class.java))
+        }
     }
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
