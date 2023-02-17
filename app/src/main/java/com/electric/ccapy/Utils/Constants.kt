@@ -34,5 +34,10 @@ object Constants {
     const val DATA = "data"
     const val KEY_REGISTERS = "key_registers"
     const val STRING_REGISTERS = "string_registers"
+    const val CHANNEL_LIMIT_KWH_ID = "channel_limit"
+    const val NOTIFICATION_LIMIT_KWH_ID = 123
+    const val SERVICE_KWH_CHANNEL_ID = "service_limit_kwh_channel_id"
+    const val ACTIVE = "Alertas Activas!"
+    const val ALERT = "Alerta!"
 
 }
