@@ -8,4 +8,5 @@ data class Users(var fullname : String = "" ,
                  var type : String = "",
                  var hasDevice : Boolean = false,
                  var current_device_id : String = "",
-                 var id : String = "")
+                 var id : String = "",
+                 var address : String = "")

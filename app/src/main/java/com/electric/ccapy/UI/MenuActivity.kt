@@ -84,6 +84,9 @@ class MenuActivity : AppCompatActivity() , LocationListener {
         optionsBinding.cvRegisters.setOnClickListener {
             startActivity(Intent(this,RegistersActivity::class.java))
         }
+        optionsBinding.cvInvoice.setOnClickListener {
+            startActivity(Intent(this,InvoiceActivity::class.java))
+        }
     }
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
