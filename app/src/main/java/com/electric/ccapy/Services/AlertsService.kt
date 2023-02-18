@@ -7,14 +7,14 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import android.app.NotificationManager
+import android.widget.Toast
 import com.electric.ccapy.Models.Config
 import com.electric.ccapy.Models.DataDevice
+import com.electric.ccapy.Notifications.NotificationSystem
 import com.electric.ccapy.Providers.AuthProviders
 import com.electric.ccapy.R
-import com.electric.ccapy.UI.MenuActivity
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.TinyDB
 import com.google.firebase.database.DataSnapshot
@@ -72,13 +72,9 @@ class AlertsService : Service(){
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UnspecifiedImmutableFlag", "MissingPermission")
     private fun initAlerts(){
-        val config = TinyDB(this).getObject(Constants.CONFIG,Config::class.java)!!
+
         val idChip = TinyDB(this).getString(Constants.ID_CHIP).replace("\"","")
-        val notificationId = 1234
-        val notificationIntent = Intent(applicationContext,MenuActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(applicationContext,0,notificationIntent,0)
-        val largeIcon = R.drawable.item_voltage
-        if (config.notify_limit){
+
             dr.child(Constants.DEVICES).child(idChip).child(Constants.CURRENT_DATA).addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
@@ -88,43 +84,38 @@ class AlertsService : Service(){
                         db.collection(Constants.CONFIG).document(AuthProviders().getCurrentUserID()).get().addOnSuccessListener {snapshot ->
                             if(snapshot.exists()){
                                 val params = snapshot.toObject(Config::class.java)!!
-                                val limitDB = params.limit.toFloat()
+                                val limitDB = params.limit
                                 val limitDevice = device.energy
 
-                                if (limitDevice > limitDB){
-
-                                    val notification = Notification
-                                        .Builder(applicationContext,Constants.CHANNEL_LIMIT_KWH_ID)
-                                        .setContentTitle(Constants.ALERT)
-                                        .setContentText("Se esta excediendo el límite de energía!!")
-                                        .setSmallIcon(R.drawable.icon_cow)
-                                        .setLargeIcon(BitmapFactory.decodeResource(resources,largeIcon))
-                                        .setPriority(Notification.PRIORITY_DEFAULT)
-                                        .setContentIntent(pendingIntent)
-                                        .build()
-                                    with(NotificationManagerCompat.from(applicationContext)) {
-                                        notify(notificationId, notification)
+                                if (limitDB != ""){
+                                    val limitDBF = limitDB.toFloat()
+                                    if (limitDevice > limitDBF ){
+                                        NotificationSystem().limitNotification(applicationContext)
                                     }
                                 }
-
-                                if(config.notify_intelligent){
-                                    if(config.type_home == "No Residencial"){
-
-                                    }else{
-
+                                if(params.notify_intelligent){
+                                    val typeHome = params.type_home
+                                    val value140kWh = 140
+                                    val value30kWh = 30
+                                    if(typeHome == "Residencial"){
+                                        if (limitDevice >= value30kWh){
+                                            if (limitDevice >= value140kWh){
+                                                NotificationSystem().exceedEnergy140(applicationContext)
+                                            }else{
+                                                NotificationSystem().exceedEnergy30(applicationContext)
+                                            }
+                                        }
                                     }
                                 }
-
                             }
                         }
-
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
-        }
+
     }
 
 }

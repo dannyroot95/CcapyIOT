@@ -38,6 +38,8 @@ object Constants {
     const val NOTIFICATION_LIMIT_KWH_ID = 123
     const val SERVICE_KWH_CHANNEL_ID = "service_limit_kwh_channel_id"
     const val ACTIVE = "Alertas Activas!"
+    const val EXCEED = "Consumo Excesivo!"
     const val ALERT = "Alerta!"
+    const val POWER_FACTOR_TITLE = "Factor de potencia : "
 
 }

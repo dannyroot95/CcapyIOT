@@ -10,6 +10,7 @@ import com.electric.ccapy.MainActivity
 import com.electric.ccapy.Models.Device
 import com.electric.ccapy.Models.Token
 import com.electric.ccapy.Models.Users
+import com.electric.ccapy.Services.AlertsService
 import com.electric.ccapy.UI.MenuActivity
 import com.electric.ccapy.UI.RegisterActivity
 import com.electric.ccapy.UI.SynchronizeDeviceActivity
@@ -170,6 +171,8 @@ class AuthProviders {
         db.remove(Constants.LOCATION)
         db.remove(Constants.KEY_CONFIG_DATA)
         db.remove(Constants.CACHE_CURRENT_DATA)
+        NotificationManagerCompat.from(activity).cancelAll()
+        activity.stopService(Intent(activity.application, AlertsService::class.java))
         val intent = Intent(activity, MainActivity::class.java)
         activity.startActivity(intent)
         activity.finish()

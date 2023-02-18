@@ -21,6 +21,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.electric.ccapy.Models.Config
 import com.electric.ccapy.Providers.DeviceDataProvider
 import com.electric.ccapy.Services.AlertsService
+import com.electric.ccapy.Services.StartAlertService
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityConfigBinding
@@ -71,7 +72,8 @@ class ConfigActivity : AppCompatActivity() {
                         val config = Config(actualRead,actualMedRead,limit,dayInvoice,switchLimit,switchIt,"false",0,typeHome)
                         db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
                         db.putObject(Constants.CONFIG,config)
-                        startService()
+                        NotificationManagerCompat.from(this).cancelAll()
+                        StartAlertService().startService(config.notify_limit,config.notify_intelligent,this)
                         DeviceDataProvider().setConfigData(config,this)
                     }else{
                         if(limit != ""){
@@ -80,7 +82,8 @@ class ConfigActivity : AppCompatActivity() {
                                 val config = Config(actualRead,actualMedRead,limit,dayInvoice,switchLimit,switchIt,"false",0,typeHome)
                                 db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
                                 db.putObject(Constants.CONFIG,config)
-                                startService()
+                                NotificationManagerCompat.from(this).cancelAll()
+                                StartAlertService().startService(config.notify_limit,config.notify_intelligent,this)
                                 DeviceDataProvider().setConfigData(config,this)
                             }else{
                                 Toast.makeText(this,"Active la opción : Notificacion de límite de consumo!",Toast.LENGTH_SHORT).show()
@@ -94,7 +97,8 @@ class ConfigActivity : AppCompatActivity() {
                     val config = Config(actualRead,actualMedRead,"",dayInvoice,false,switchIt,"false",0,typeHome)
                     db.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
                     db.putObject(Constants.CONFIG,config)
-                    startService()
+                    NotificationManagerCompat.from(this).cancelAll()
+                    StartAlertService().startService(config.notify_limit,config.notify_intelligent,this)
                     DeviceDataProvider().setConfigData(config,this)
                 }
 
@@ -103,25 +107,6 @@ class ConfigActivity : AppCompatActivity() {
             }
         }else{
             Toast.makeText(this,"Complete los campos!",Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
-    private fun startService(){
-
-        val switchLimit = binding.swLimit.isChecked
-        val switchIt = binding.swLimitIt.isChecked
-
-        if(switchLimit || switchIt){
-            if(isActiveService(AlertsService::class.java)){
-                NotificationManagerCompat.from(this).cancelAll()
-                startService(Intent(this, AlertsService::class.java))
-            }else{
-                startService(Intent(this, AlertsService::class.java))
-            }
-        }else{
-            stopService(Intent(this, AlertsService::class.java))
-            NotificationManagerCompat.from(this).cancelAll()
         }
 
     }
@@ -212,21 +197,6 @@ class ConfigActivity : AppCompatActivity() {
             val yearSpinner: View = dp_mes.findViewById(yearSpinnerId)
             yearSpinner.visibility = View.GONE
         }
-    }
-
-    private fun isActiveService(myService : Class<AlertsService>) : Boolean{
-
-        val manager: ActivityManager = getSystemService(
-            Context.ACTIVITY_SERVICE
-        )as ActivityManager
-
-        for(service : ActivityManager.RunningServiceInfo in
-        manager.getRunningServices(Integer.MAX_VALUE)){
-            if(myService.name.equals(service.service.className)){
-                return true
-            }
-        }
-        return false
     }
 
 }

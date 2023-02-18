@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.electric.ccapy.Models.*
+import com.electric.ccapy.Services.StartAlertService
 import com.electric.ccapy.UI.MapsActivity
 import com.electric.ccapy.UI.MenuActivity
 import com.electric.ccapy.UI.SynchronizeDeviceActivity
@@ -59,6 +60,10 @@ class DeviceDataProvider {
                                         ty.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
                                         ty.putObject(Constants.CONFIG,config)
 
+                                        if(config.notify_limit || config.notify_intelligent){
+                                            StartAlertService().startService(config.notify_limit,config.notify_intelligent,activity)
+                                        }
+
                                         db.child(Constants.DEVICES).child(idChip).child(Constants.CONFIG).get().addOnSuccessListener {
                                             if(it.exists()){
                                                 binding.lnNoConfig.visibility = View.GONE
@@ -74,8 +79,10 @@ class DeviceDataProvider {
                                                 binding.txtWatts.text = device.watts.toString()+Constants.METRIC_POWER
                                                 binding.txtAmpere.text = device.ampere.toString()+Constants.METRIC_AMPERE
                                                 binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
+                                                binding.txtPf.text = Constants.POWER_FACTOR_TITLE+device.power_factor.toString()
                                                 binding.lnLoader.visibility = View.GONE
                                                 binding.lnAllData.visibility = View.VISIBLE
+
                                             }else{
                                                 val configTiny = TinyDB(activity).getString(Constants.KEY_CONFIG_DATA)
                                                 if(configTiny != ""){
@@ -94,6 +101,7 @@ class DeviceDataProvider {
                                                     binding.txtWatts.text = device.watts.toString()+Constants.METRIC_POWER
                                                     binding.txtAmpere.text = device.ampere.toString()+Constants.METRIC_AMPERE
                                                     binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
+                                                    binding.txtPf.text = Constants.POWER_FACTOR_TITLE+device.power_factor.toString()
                                                     binding.lnLoader.visibility = View.GONE
                                                     binding.lnAllData.visibility = View.VISIBLE
                                                 }
@@ -109,6 +117,7 @@ class DeviceDataProvider {
                                         binding.txtWatts.text = device.watts.toString()+Constants.METRIC_POWER
                                         binding.txtAmpere.text = device.ampere.toString()+Constants.METRIC_AMPERE
                                         binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
+                                        binding.txtPf.text = Constants.POWER_FACTOR_TITLE+device.power_factor.toString()
                                         binding.lnLoader.visibility = View.GONE
                                         binding.lnAllData.visibility = View.VISIBLE
                                     }
@@ -116,10 +125,15 @@ class DeviceDataProvider {
 
                             }else{
                                 fs.collection(Constants.CONFIG).document(AuthProviders().getCurrentUserID()).get().addOnSuccessListener {snapshot ->
+
                                     if(snapshot.exists()){
                                         val config = snapshot.toObject(Config::class.java)!!
                                         ty.putString(Constants.KEY_CONFIG_DATA,Constants.STRING_CONFIG_DATA)
                                         ty.putObject(Constants.CONFIG,config)
+
+                                        if(config.notify_limit || config.notify_intelligent){
+                                            StartAlertService().startService(config.notify_limit,config.notify_intelligent,activity)
+                                        }
 
                                         db.child(Constants.DEVICES).child(idChip).child(Constants.CONFIG).get().addOnSuccessListener {
                                             if(it.exists()){
@@ -136,6 +150,7 @@ class DeviceDataProvider {
                                                 binding.txtWatts.text = device.watts.toString()+Constants.METRIC_POWER
                                                 binding.txtAmpere.text = device.ampere.toString()+Constants.METRIC_AMPERE
                                                 binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
+                                                binding.txtPf.text = Constants.POWER_FACTOR_TITLE+device.power_factor.toString()
                                                 binding.lnLoader.visibility = View.GONE
                                                 binding.lnAllData.visibility = View.VISIBLE
                                             }else{
@@ -156,6 +171,7 @@ class DeviceDataProvider {
                                                     binding.txtWatts.text = device.watts.toString()+Constants.METRIC_POWER
                                                     binding.txtAmpere.text = device.ampere.toString()+Constants.METRIC_AMPERE
                                                     binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
+                                                    binding.txtPf.text = Constants.POWER_FACTOR_TITLE+device.power_factor.toString()
                                                     binding.lnLoader.visibility = View.GONE
                                                     binding.lnAllData.visibility = View.VISIBLE
                                                 }
@@ -171,6 +187,7 @@ class DeviceDataProvider {
                                         binding.txtWatts.text = device.watts.toString()+Constants.METRIC_POWER
                                         binding.txtAmpere.text = device.ampere.toString()+Constants.METRIC_AMPERE
                                         binding.txtFrecuency.text = device.frequency.toString()+Constants.METRIC_FREQUENCY
+                                        binding.txtPf.text = Constants.POWER_FACTOR_TITLE+device.power_factor.toString()
                                         binding.lnLoader.visibility = View.GONE
                                         binding.lnAllData.visibility = View.VISIBLE
                                     }

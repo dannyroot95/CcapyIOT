@@ -1,7 +1,9 @@
 package com.electric.ccapy.UI
 
 import android.annotation.SuppressLint
+import android.app.ActivityManager
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.location.LocationListener
@@ -11,12 +13,15 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
 import com.electric.ccapy.Models.Config
 import com.electric.ccapy.Models.DataDevice
 import com.electric.ccapy.Models.Location
 import com.electric.ccapy.Models.Users
 import com.electric.ccapy.Providers.AuthProviders
 import com.electric.ccapy.Providers.DeviceDataProvider
+import com.electric.ccapy.Services.AlertsService
+import com.electric.ccapy.Services.StartAlertService
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.Convert
 import com.electric.ccapy.Utils.CurrentDateTime
@@ -108,6 +113,7 @@ class MenuActivity : AppCompatActivity() , LocationListener {
             binding.txtWatts.text = db.watts.toString()+Constants.METRIC_POWER
             binding.txtAmpere.text = db.ampere.toString()+Constants.METRIC_AMPERE
             binding.txtFrecuency.text = db.frequency.toString()+Constants.METRIC_FREQUENCY
+            binding.txtPf.text = Constants.POWER_FACTOR_TITLE+db.power_factor.toString()
 
             if(cf != ""){
                 val config = TinyDB(this).getObject(Constants.CONFIG,Config::class.java)!!
@@ -118,6 +124,11 @@ class MenuActivity : AppCompatActivity() , LocationListener {
                 }else{
                     binding.txtActualC.text = Convert().twoDecimals((config.actual_med_read.toFloat()-config.actual_read.toFloat())+db.energy)+" kw/h"
                 }
+
+                if(config.notify_limit || config.notify_intelligent){
+                    StartAlertService().startService(config.notify_limit,config.notify_intelligent,this)
+                }
+
             }
 
             DeviceDataProvider().getData(this,binding)
@@ -155,5 +166,6 @@ class MenuActivity : AppCompatActivity() , LocationListener {
     override fun onLocationChanged(p0: android.location.Location) {
         TODO("Not yet implemented")
     }
+
 
 }
