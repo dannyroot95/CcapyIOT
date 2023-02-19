@@ -94,16 +94,13 @@ class AlertsService : Service(){
                                     }
                                 }
                                 if(params.notify_intelligent){
-                                    val typeHome = params.type_home
                                     val value140kWh = 140
                                     val value30kWh = 30
-                                    if(typeHome == "Residencial"){
-                                        if (limitDevice >= value30kWh){
-                                            if (limitDevice >= value140kWh){
-                                                NotificationSystem().exceedEnergy140(applicationContext)
-                                            }else{
-                                                NotificationSystem().exceedEnergy30(applicationContext)
-                                            }
+                                    if (limitDevice >= value30kWh){
+                                        if (limitDevice >= value140kWh){
+                                            NotificationSystem().exceedEnergy140(applicationContext,limitDevice.toString())
+                                        }else{
+                                            NotificationSystem().exceedEnergy30(applicationContext,limitDevice.toString())
                                         }
                                     }
                                 }

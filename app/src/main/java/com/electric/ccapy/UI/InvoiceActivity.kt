@@ -17,13 +17,6 @@ class InvoiceActivity : AppCompatActivity() {
         binding = ActivityInvoiceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val user = TinyDB(this).getObject(Constants.USER, Users::class.java)!!
-        binding.ivName.text = user.fullname
-        if(user.address == ""){
-            binding.ivAddress.text = "SIN DIRECCIÓN REGISTRADA"
-        }else{
-            binding.ivAddress.text = user.address
-        }
         InvoiceProvider().getInvoice(this,binding)
 
     }

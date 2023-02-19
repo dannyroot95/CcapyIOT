@@ -46,13 +46,13 @@ class NotificationSystem {
 
     @SuppressLint("MissingPermission")
     @RequiresApi(Build.VERSION_CODES.O)
-    fun exceedEnergy30(applicationContext : Context){
+    fun exceedEnergy30(applicationContext : Context,energy : String){
         val notificationIntent = Intent(applicationContext, MenuActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(applicationContext,0,notificationIntent,0)
         val notification = Notification
             .Builder(applicationContext, Constants.CHANNEL_LIMIT_KWH_ID)
             .setContentTitle(Constants.EXCEED)
-            .setContentText("Energia > 30kwh detectada!!")
+            .setContentText("Energia de $energy kw/h detectada!!")
             .setSmallIcon(R.drawable.icon_cow)
             .setLargeIcon(BitmapFactory.decodeResource(ContextWrapper(applicationContext).resources,largeIcon30kwh))
             .setPriority(Notification.PRIORITY_DEFAULT)
@@ -65,13 +65,13 @@ class NotificationSystem {
 
     @SuppressLint("MissingPermission")
     @RequiresApi(Build.VERSION_CODES.O)
-    fun exceedEnergy140(applicationContext : Context){
+    fun exceedEnergy140(applicationContext : Context,energy : String){
         val notificationIntent = Intent(applicationContext, MenuActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(applicationContext,0,notificationIntent,0)
         val notification = Notification
             .Builder(applicationContext, Constants.CHANNEL_LIMIT_KWH_ID)
             .setContentTitle(Constants.EXCEED)
-            .setContentText("Energia > 140kwh detectada!!")
+            .setContentText("Energia de $energy kw/h detectada!!")
             .setSmallIcon(R.drawable.icon_cow)
             .setLargeIcon(BitmapFactory.decodeResource(ContextWrapper(applicationContext).resources,largeIcon140kwh))
             .setPriority(Notification.PRIORITY_DEFAULT)

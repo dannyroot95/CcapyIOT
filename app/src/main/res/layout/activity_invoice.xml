@@ -5,13 +5,32 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="25dp"
+    android:padding="20dp"
     android:background="#F9F9F9"
     android:layout_height="match_parent"
     tools:context=".UI.InvoiceActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/ln_data"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:text="Obteniendo Datos..."
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_device"
+        android:id="@+id/cv_invoice"
+        android:visibility="gone"
         app:cardCornerRadius="2dp"
         android:outlineSpotShadowColor="@color/black"
         android:outlineAmbientShadowColor="@color/black"
@@ -468,6 +487,7 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewLight
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_ap"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
@@ -494,6 +514,7 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewLight
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_cf"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
@@ -520,6 +541,7 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewLight
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_energy_cost"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
@@ -546,6 +568,7 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewLight
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_it_cp"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
@@ -572,6 +595,7 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewLight
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_mant_re"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
@@ -607,11 +631,12 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewBold
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_sub_total"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="12sp"
                     android:textColor="@color/black"
-                    android:text="S/XX.X"
+                    android:text="XX.X"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
@@ -633,6 +658,7 @@
                 <com.electric.ccapy.Utils.PoppinsTextviewLight
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/iv_igv"
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
@@ -675,32 +701,6 @@
 
                 <com.electric.ccapy.Utils.PoppinsTextviewRegular
                     android:layout_width="wrap_content"
-                    android:text="INTERES MORATORIO"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
                     android:text="LEY 28749 ELECTRIFICACION RURAL"
                     android:textSize="10sp"
                     android:layout_marginLeft="10dp"
@@ -713,6 +713,7 @@
                     android:textAlignment="textEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="10sp"
+                    android:id="@+id/iv_law"
                     android:textColor="@color/black"
                     android:text="X.XX"
                     android:layout_height="wrap_content"/>
@@ -750,14 +751,14 @@
                     <com.electric.ccapy.Utils.PoppinsTextviewLight
                         android:layout_width="wrap_content"
                         android:textAlignment="center"
-                        android:textSize="8sp"
+                        android:textSize="6sp"
                         android:textColor="@color/black"
                         android:text="PAGUE A TIEMPO Y"
                         android:layout_height="wrap_content"/>
                     <com.electric.ccapy.Utils.PoppinsTextviewBold
                         android:layout_width="wrap_content"
                         android:textAlignment="center"
-                        android:textSize="8sp"
+                        android:textSize="6sp"
                         android:textColor="@color/black"
                         android:text="EVITE EL CORTE"
                         android:layout_height="wrap_content"
@@ -775,18 +776,19 @@
                         android:layout_width="match_parent"
                         android:textAlignment="textEnd"
                         android:layout_marginRight="10dp"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
-                        android:text="TOTAL A PAGAR S/."
+                        android:text="TOTAL A PAGAR APROX. S/."
                         android:layout_height="wrap_content"/>
 
                     <com.electric.ccapy.Utils.PoppinsTextviewBold
                         android:layout_width="match_parent"
                         android:textAlignment="textEnd"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
+                        android:id="@+id/iv_total"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/black"
-                        android:text="***234.00"
+                        android:text="***XXX.XX"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
