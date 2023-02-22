@@ -1,27 +1,26 @@
 package com.electric.ccapy.UI
 
+import android.R
 import android.annotation.SuppressLint
-import android.app.ActivityManager
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.location.LocationListener
 import android.os.Bundle
 import android.view.View
 import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationManagerCompat
 import com.electric.ccapy.Models.Config
 import com.electric.ccapy.Models.DataDevice
 import com.electric.ccapy.Models.Location
 import com.electric.ccapy.Models.Users
 import com.electric.ccapy.Providers.AuthProviders
 import com.electric.ccapy.Providers.DeviceDataProvider
-import com.electric.ccapy.Services.AlertsService
 import com.electric.ccapy.Services.StartAlertService
+import com.electric.ccapy.UI.Graphics.CurrentGraph
+import com.electric.ccapy.UI.Graphics.PowerGraph
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.Convert
 import com.electric.ccapy.Utils.CurrentDateTime
@@ -31,10 +30,12 @@ import com.electric.ccapy.databinding.DialogOptionsBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class MenuActivity : AppCompatActivity() , LocationListener {
     private lateinit var binding : ActivityMenuBinding
     private lateinit var optionsBinding : DialogOptionsBinding
     private lateinit var dialog: Dialog
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
@@ -58,6 +59,36 @@ class MenuActivity : AppCompatActivity() , LocationListener {
         }
         binding.btnConfig.setOnClickListener {
             startActivity(Intent(this,ConfigActivity::class.java))
+        }
+        binding.cvPower.setOnClickListener {
+            startActivity(Intent(this,PowerGraph::class.java))
+        }
+        binding.cvSerie.setOnClickListener {
+            val idChip = TinyDB(this).getString(Constants.ID_CHIP).replace("\"","")
+            val toast = Toast.makeText(
+                applicationContext,
+                idChip,
+                Toast.LENGTH_SHORT
+            )
+
+            val toastView = toast.view
+            toastView!!.setBackgroundColor(Color.parseColor("#5BBD00"))
+            toast.show()
+        }
+        binding.cvFrequency.setOnClickListener {
+            val fr = binding.txtFrecuency.text
+            val toast = Toast.makeText(
+                applicationContext,
+                fr,
+                Toast.LENGTH_SHORT
+            )
+
+            val toastView = toast.view
+            toastView!!.setBackgroundColor(Color.parseColor("#64F0FF"))
+            toast.show()
+        }
+        binding.cvCurrent.setOnClickListener {
+            startActivity(Intent(this,CurrentGraph::class.java))
         }
         optionsBinding.closeDialog.setOnClickListener {
             dialog.dismiss()

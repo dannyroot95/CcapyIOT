@@ -25,6 +25,12 @@
         android:theme="@style/Theme.Ccapy"
         tools:targetApi="31">
         <activity
+            android:name=".UI.Graphics.CurrentGraph"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Graphics.PowerGraph"
+            android:exported="false" />
+        <activity
             android:name=".UI.InvoiceActivity"
             android:exported="false" />
 
