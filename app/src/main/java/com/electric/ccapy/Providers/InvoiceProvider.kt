@@ -19,6 +19,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
 import java.util.*
 
 class InvoiceProvider {
@@ -33,6 +34,7 @@ class InvoiceProvider {
         val user = cache.getObject(Constants.USER, Users::class.java)!!
 
         dr.child(Constants.DEVICES).child(idChip).child(Constants.CURRENT_DATA).addListenerForSingleValueEvent(object:ValueEventListener{
+            @SuppressLint("SimpleDateFormat")
             override fun onDataChange(snapshotDevice: DataSnapshot) {
                 if (snapshotDevice.exists()){
                     val device = snapshotDevice.getValue(DataDevice::class.java)!!
@@ -42,6 +44,12 @@ class InvoiceProvider {
                             db.collection(Constants.METRICS).document(Constants.DATA).get().addOnSuccessListener { snapshotM->
                                 if (snapshotM.exists()){
                                     val metrics = snapshotM.toObject(Metrics::class.java)!!
+
+                                    val sdfDate = SimpleDateFormat("dd/MM/yyyy hh:mm")
+                                    val netDate = Date(System.currentTimeMillis())
+                                    val myDate = sdfDate.format(netDate)
+
+                                    binding.txtDate.text = myDate
 
                                     binding.ivName.text = user.fullname
                                     if(user.address == ""){

@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:textAlignment="center"
             android:text="Foto de perfil"
+            android:visibility="invisible"
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:layout_height="match_parent"/>
@@ -123,10 +124,10 @@
 
             <com.electric.ccapy.Utils.PoppinsEditText
                 android:id="@+id/edt_address"
+                android:inputType="textCapCharacters"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

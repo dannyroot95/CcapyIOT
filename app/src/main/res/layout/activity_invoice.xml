@@ -69,7 +69,7 @@
                     android:layout_weight="1"
                     android:textSize="10sp"
                     android:textAlignment="textEnd"
-                    android:text="19 ene ., 07:01 pm"
+                    android:id="@+id/txtDate"
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
                     android:textColor="@color/black"

@@ -24,9 +24,13 @@ class MetricsProvider {
                 binding.alicuota.text = "S/"+metrics.alicuota
                 binding.interes.text = "S/"+metrics.interes
                 binding.noResidential.text = "S/"+metrics.price_no_residential
+                binding.txtChrNoResidential.text = "S/"+metrics.price_charge_no_residential
                 binding.residential.text = "S/"+metrics.price_residential_30
-                binding.residential31.text = "S/"+metrics.price_residential_30
+                binding.txtChrResidential30.text = "S/"+metrics.price_charge_residential_30
+                binding.residential31.text = "S/"+metrics.price_residential_31
+                binding.txtChrResidential31.text = "S/"+metrics.price_charge_residential_31
                 binding.residential140.text = "S/"+metrics.price_residential_140
+                binding.txtChrResidential140.text = "S/"+metrics.price_charge_residential_140
                 binding.reconecct.text = "S/"+metrics.reconecct
                 binding.law.text = "S/"+metrics.law_28749
                 binding.progress.visibility = View.GONE

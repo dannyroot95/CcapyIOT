@@ -405,6 +405,22 @@
                                 android:textSize="22dp"
                                 android:layout_height="wrap_content"/>
 
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:text="Cargo fijo : "
+                                    android:layout_height="wrap_content"/>
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:id="@+id/txt_chr_no_residential"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
                         </LinearLayout>
 
                     </LinearLayout>
@@ -494,6 +510,22 @@
                                 android:gravity="right"
                                 android:textSize="22dp"
                                 android:layout_height="wrap_content"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:text="Cargo fijo : "
+                                    android:layout_height="wrap_content"/>
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:id="@+id/txt_chr_residential_30"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -585,6 +617,22 @@
                                 android:textSize="22dp"
                                 android:layout_height="wrap_content"/>
 
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:text="Cargo fijo : "
+                                    android:layout_height="wrap_content"/>
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:id="@+id/txt_chr_residential_31"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
                         </LinearLayout>
 
                     </LinearLayout>
@@ -674,6 +722,22 @@
                                 android:gravity="right"
                                 android:textSize="22dp"
                                 android:layout_height="wrap_content"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:text="Cargo fijo : "
+                                    android:layout_height="wrap_content"/>
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:id="@+id/txt_chr_residential_140"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 

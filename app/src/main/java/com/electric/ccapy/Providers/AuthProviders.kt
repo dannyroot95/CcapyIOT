@@ -1,5 +1,6 @@
 package com.electric.ccapy.Providers
 
+import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.util.Log
@@ -176,6 +177,20 @@ class AuthProviders {
         val intent = Intent(activity, MainActivity::class.java)
         activity.startActivity(intent)
         activity.finish()
+    }
+
+    fun update(phone : String , address : String , activity : Activity){
+        val x = TinyDB(activity).getObject(Constants.USER, Users::class.java)!!
+        val tb = TinyDB(activity)
+        db.collection(Constants.USERS).document(AuthProviders().getCurrentUserID()).update(mapOf(
+            "phone" to phone,
+            "address" to address
+        ))
+        x.address = address
+        x.phone = phone
+        tb.putObject(Constants.USER,x)
+        activity.finish()
+        Toast.makeText(activity,"Datos Actualizados!!",Toast.LENGTH_SHORT).show()
     }
 
 }
