@@ -1,7 +1,5 @@
 package com.electric.ccapy.Utils
 
-import com.electric.ccapy.Models.Month
-
 class CurrentDateTime {
 
     fun getMonth(month : String ): String {

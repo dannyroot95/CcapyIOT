@@ -25,10 +25,15 @@
         android:theme="@style/Theme.Ccapy"
         tools:targetApi="31">
         <activity
+            android:name=".UI.Graphics.EnergyGraph"
+            android:exported="false" />
+        <activity
             android:name=".UI.Graphics.CurrentGraph"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".UI.Graphics.PowerGraph"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".UI.InvoiceActivity"
@@ -85,6 +90,7 @@
             android:exported="false" />
         <activity
             android:name=".UI.MenuActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".UI.RegisterActivity"
@@ -101,14 +107,6 @@
         </activity>
 
         <service android:name=".Services.AlertsService" />
-        <service
-            android:name=".Notifications.FirebaseMessagingService"
-            android:exported="false"
-            tools:ignore="Instantiatable">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"

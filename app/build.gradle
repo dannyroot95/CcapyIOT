@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     //graph
     implementation 'com.jjoe64:graphview:4.2.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     //toasty
 
     testImplementation 'junit:junit:4.13.2'

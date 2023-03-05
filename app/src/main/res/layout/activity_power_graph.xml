@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="20dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".UI.Graphics.PowerGraph">
@@ -27,10 +26,44 @@
 
     </LinearLayout>
 
-    <com.jjoe64.graphview.GraphView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/graph"
-        android:visibility="gone"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_height="match_parent">
+
+        <com.electric.ccapy.Utils.PoppinsTextviewLight
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:text="Hora y fecha"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="wrap_content"
+                android:rotation="-90"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginRight="-40dp"
+                android:layout_marginLeft="-40dp"
+                android:text="Potencia (Watts)"
+                android:layout_height="match_parent"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/graph"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

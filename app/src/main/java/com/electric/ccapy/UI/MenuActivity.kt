@@ -1,10 +1,8 @@
 package com.electric.ccapy.UI
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.location.LocationListener
 import android.os.Bundle
@@ -20,6 +18,7 @@ import com.electric.ccapy.Providers.AuthProviders
 import com.electric.ccapy.Providers.DeviceDataProvider
 import com.electric.ccapy.Services.StartAlertService
 import com.electric.ccapy.UI.Graphics.CurrentGraph
+import com.electric.ccapy.UI.Graphics.EnergyGraph
 import com.electric.ccapy.UI.Graphics.PowerGraph
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.Convert
@@ -27,6 +26,12 @@ import com.electric.ccapy.Utils.CurrentDateTime
 import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityMenuBinding
 import com.electric.ccapy.databinding.DialogOptionsBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,6 +54,7 @@ class MenuActivity : AppCompatActivity() , LocationListener {
         setupUI()
 
         binding.btnProfile.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,ProfileActivity::class.java))
         }
         binding.btnOptions.setOnClickListener {
@@ -58,64 +64,62 @@ class MenuActivity : AppCompatActivity() , LocationListener {
             window.setLayout(950, 1400)
         }
         binding.btnConfig.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,ConfigActivity::class.java))
         }
         binding.cvPower.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,PowerGraph::class.java))
         }
         binding.cvSerie.setOnClickListener {
             val idChip = TinyDB(this).getString(Constants.ID_CHIP).replace("\"","")
-            val toast = Toast.makeText(
-                applicationContext,
-                idChip,
-                Toast.LENGTH_SHORT
-            )
-
-            val toastView = toast.view
-            toastView!!.setBackgroundColor(Color.parseColor("#5BBD00"))
-            toast.show()
+            Toast.makeText(this,idChip,Toast.LENGTH_SHORT).show()
         }
         binding.cvFrequency.setOnClickListener {
             val fr = binding.txtFrecuency.text
-            val toast = Toast.makeText(
-                applicationContext,
-                fr,
-                Toast.LENGTH_SHORT
-            )
-
-            val toastView = toast.view
-            toastView!!.setBackgroundColor(Color.parseColor("#64F0FF"))
-            toast.show()
+            Toast.makeText(this,fr,Toast.LENGTH_SHORT).show()
         }
         binding.cvCurrent.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,CurrentGraph::class.java))
+        }
+        binding.cvTotalEnergy.setOnClickListener {
+            disableButtons()
+            startActivity(Intent(this,EnergyGraph::class.java))
         }
         optionsBinding.closeDialog.setOnClickListener {
             dialog.dismiss()
         }
         optionsBinding.cvLogout.setOnClickListener {
+            disableButtons()
             AuthProviders().logout(this)
         }
         optionsBinding.cvDevice.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,DeviceActivity::class.java))
         }
         optionsBinding.cvConfig.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,ConfigActivity::class.java))
         }
         optionsBinding.cvMetrics.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,MetricsActivity::class.java))
         }
         optionsBinding.cvLocation.setOnClickListener {
             if(TinyDB(this).getObject(Constants.LOCATION,Location::class.java) != null){
+                disableButtons()
                 startActivity(Intent(this,MapsActivity::class.java))
             }else{
                 Toast.makeText(this,"No disponible!",Toast.LENGTH_SHORT).show()
             }
         }
         optionsBinding.cvRegisters.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,RegistersActivity::class.java))
         }
         optionsBinding.cvInvoice.setOnClickListener {
+            disableButtons()
             startActivity(Intent(this,InvoiceActivity::class.java))
         }
     }
@@ -201,5 +205,37 @@ class MenuActivity : AppCompatActivity() , LocationListener {
         TODO("Not yet implemented")
     }
 
+    override fun onResume() {
+        enableButtons()
+        super.onResume()
+    }
+
+    private fun enableButtons(){
+        binding.btnProfile.isEnabled = true
+        binding.cvPower.isEnabled = true
+        binding.cvCurrent.isEnabled = true
+        binding.cvTotalEnergy.isEnabled = true
+        optionsBinding.cvConfig.isEnabled = true
+        optionsBinding.cvInvoice.isEnabled = true
+        optionsBinding.cvMetrics.isEnabled = true
+        optionsBinding.cvLogout.isEnabled = true
+        optionsBinding.cvRegisters.isEnabled = true
+        optionsBinding.cvDevice.isEnabled = true
+        optionsBinding.cvLocation.isEnabled = true
+    }
+
+    private fun disableButtons(){
+        binding.btnProfile.isEnabled = false
+        binding.cvPower.isEnabled = false
+        binding.cvCurrent.isEnabled = false
+        binding.cvTotalEnergy.isEnabled = false
+        optionsBinding.cvConfig.isEnabled = false
+        optionsBinding.cvInvoice.isEnabled = false
+        optionsBinding.cvMetrics.isEnabled = false
+        optionsBinding.cvLogout.isEnabled = false
+        optionsBinding.cvRegisters.isEnabled = false
+        optionsBinding.cvDevice.isEnabled = false
+        optionsBinding.cvLocation.isEnabled = false
+    }
 
 }
