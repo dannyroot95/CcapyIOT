@@ -115,7 +115,7 @@ class EnergyGraph : AppCompatActivity() {
                         val v : ArrayList<Float> = ArrayList()
                         var kwh = 0.0f
                         val actualMonth = (Calendar.getInstance().get(Calendar.MONTH)+1).toInt()
-                        if(config.actual_read.toFloat() != 0.0f){
+                        if(config.actual_read != "0.0"){
                             kwh = config.actual_med_read.toFloat()-config.actual_read.toFloat()
                         }
                         val labels = arrayListOf(

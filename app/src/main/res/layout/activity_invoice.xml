@@ -1,804 +1,844 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp"
-    android:background="#F9F9F9"
     android:layout_height="match_parent"
     tools:context=".UI.InvoiceActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:background="#F9F9F9"
         android:gravity="center"
-        android:id="@+id/ln_data"
-        android:layout_height="wrap_content">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.electric.ccapy.Utils.PoppinsTextviewLight
-            android:layout_width="match_parent"
-            android:textAlignment="center"
-            android:text="Obteniendo Datos..."
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_invoice"
-        android:visibility="gone"
-        app:cardCornerRadius="2dp"
-        android:outlineSpotShadowColor="@color/black"
-        android:outlineAmbientShadowColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="p">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <LinearLayout
+            android:id="@+id/ln_data"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obteniendo Datos..."
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_invoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            android:visibility="gone"
+            app:cardCornerRadius="2dp"
+            tools:ignore="UnusedAttribute"
+            tools:targetApi="p">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/white">
+                android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="60dp"
-                    android:src="@drawable/logo"
-                    android:layout_height="60dp"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:text="CCAPY"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="25sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:textAlignment="textEnd"
-                    android:id="@+id/txtDate"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:textColor="@color/black"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:ignore="RtlCompat" />
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#000"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:text="DATOS DE USUARIO"
-                    android:layout_height="wrap_content"
-                    tools:ignore="HardcodedText" />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#000"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="USUARIO : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:id="@+id/iv_name"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXXXXXXXXXXXXXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="DIRECCIÓN : "
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:id="@+id/iv_address"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXXXXXXXXXXXXXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000"/>
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/logo" />
 
                     <com.electric.ccapy.Utils.PoppinsTextviewBold
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="CCAPY"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="10sp"
-                        android:text="DATOS TÉCNICOS"
-                        android:layout_height="wrap_content"
-                        tools:ignore="HardcodedText" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="TARIFA : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:id="@+id/iv_type_home"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXXXXXXXXXXXXXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="ACOMETIDA : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="AEREA"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="TENSIÓN : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="220 V - BT"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000"/>
-
-                    <com.electric.ccapy.Utils.PoppinsTextviewBold
-                        android:layout_width="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        android:text="DETALLE DE CONSUMO"
-                        android:layout_height="wrap_content"
-                        tools:ignore="HardcodedText" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="LECTURA ACTUAL : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:id="@+id/iv_actual_med"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="LECTURA DEL SENSOR : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:textSize="10sp"
-                    android:id="@+id/iv_sensor_med"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="FACTOR : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:textSize="10sp"
-                    android:id="@+id/iv_factor"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="PRECIO UNIT S/. /kW.h : "
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:textSize="10sp"
-                    android:id="@+id/iv_price_kwh"
-                    android:textColor="@color/black"
-                    android:text="XXXXXXX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000"/>
-
-                    <com.electric.ccapy.Utils.PoppinsTextviewBold
-                        android:layout_width="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        android:text="DETALLE DE FACTURACIÓN"
-                        android:layout_height="wrap_content"
-                        tools:ignore="HardcodedText" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:text="CONCEPTO"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="IMPORTE S/."
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="ALUMBRADO PUBLICO"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_ap"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="CARGO FIJO"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_cf"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="ENERGÍA"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_energy_cost"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="INTERESES COMPENSATORIOS"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_it_cp"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="MANTENIMIENTO Y REPOS. DE LA CONEXION"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_mant_re"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="#000"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:text="SUBTOTAL"
-                    android:textSize="12sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_sub_total"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:text="XX.X"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="IGV 18%"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/iv_igv"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="#000"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewBold
-                    android:layout_width="wrap_content"
-                    android:text="OTROS PAGOS"
-                    android:textSize="12sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-                <com.electric.ccapy.Utils.PoppinsTextviewRegular
-                    android:layout_width="wrap_content"
-                    android:text="LEY 28749 ELECTRIFICACION RURAL"
-                    android:textSize="10sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"/>
-
-                <com.electric.ccapy.Utils.PoppinsTextviewLight
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"
-                    android:id="@+id/iv_law"
-                    android:textColor="@color/black"
-                    android:text="X.XX"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
-                android:background="#000"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="50dp"
-                    android:src="@drawable/ic_bold"
-                    android:layout_marginStart="10dp"
-                    android:layout_height="50dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_height="match_parent">
+                        android:textSize="25sp" />
 
                     <com.electric.ccapy.Utils.PoppinsTextviewLight
-                        android:layout_width="wrap_content"
-                        android:textAlignment="center"
-                        android:textSize="6sp"
-                        android:textColor="@color/black"
-                        android:text="PAGUE A TIEMPO Y"
-                        android:layout_height="wrap_content"/>
-                    <com.electric.ccapy.Utils.PoppinsTextviewBold
-                        android:layout_width="wrap_content"
-                        android:textAlignment="center"
-                        android:textSize="6sp"
-                        android:textColor="@color/black"
-                        android:text="EVITE EL CORTE"
+                        android:id="@+id/txtDate"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        tools:ignore="TooManyViews" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="match_parent">
-
-                    <com.electric.ccapy.Utils.PoppinsTextviewBold
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
                         android:textAlignment="textEnd"
-                        android:layout_marginRight="10dp"
-                        android:textSize="12sp"
                         android:textColor="@color/black"
-                        android:text="TOTAL A PAGAR APROX. S/."
-                        android:layout_height="wrap_content"/>
-
-                    <com.electric.ccapy.Utils.PoppinsTextviewBold
-                        android:layout_width="match_parent"
-                        android:textAlignment="textEnd"
-                        android:textSize="12sp"
-                        android:id="@+id/iv_total"
-                        android:layout_marginRight="10dp"
-                        android:textColor="@color/black"
-                        android:text="***XXX.XX"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp"
+                        tools:ignore="RtlCompat" />
 
                 </LinearLayout>
 
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DATOS DE USUARIO"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="10sp"
+                                tools:ignore="HardcodedText" />
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MES DE FACTURA : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_month_invoice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXXXXXXXXXXXXXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="USUARIO : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXXXXXXXXXXXXXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DIRECCIÓN : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXXXXXXXXXXXXXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DATOS TÉCNICOS"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="10sp"
+                                tools:ignore="HardcodedText" />
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TARIFA : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_type_home"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXXXXXXXXXXXXXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ACOMETIDA : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AEREA"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TENSIÓN : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="220 V - BT"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DETALLE DE CONSUMO"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="10sp"
+                                tools:ignore="HardcodedText" />
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LECTURA ACTUAL : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_actual_med"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LECTURA DEL SENSOR : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_sensor_med"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FACTOR : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_factor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PRECIO UNIT S/. /kW.h : "
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_price_kwh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXXXXXX"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DETALLE DE FACTURACIÓN"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="10sp"
+                                tools:ignore="HardcodedText" />
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="#000" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="CONCEPTO"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="IMPORTE S/."
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="ALUMBRADO PUBLICO"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_ap"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="CARGO FIJO"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_cf"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="ENERGÍA"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_energy_cost"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="INTERESES COMPENSATORIOS"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_it_cp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="MANTENIMIENTO Y REPOS. DE LA CONEXION"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_mant_re"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:background="#000" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="SUBTOTAL"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:id="@+id/iv_sub_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="XX.X"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="IGV 18%"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_igv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:background="#000" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="OTROS PAGOS"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="LEY 28749 ELECTRIFICACION RURAL"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                            <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                android:id="@+id/iv_law"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="X.XX"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="10dp"
+                            android:background="#000" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:borderWidth="1dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:elevation="0dp"
+                                app:elevation="0dp"
+                                android:id="@+id/date"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="TODO"
+                                android:src="@drawable/ic_date"
+                                tools:ignore="ContentDescription" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewLight
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="PAGUE A TIEMPO Y"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="6sp" />
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="EVITE EL CORTE"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="6sp"
+                                    tools:ignore="TooManyViews" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:text="TOTAL A PAGAR APROX. S/."
+                                    android:textAlignment="textEnd"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                                <com.electric.ccapy.Utils.PoppinsTextviewBold
+                                    android:id="@+id/iv_total"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:text="***XXX.XX"
+                                    android:textAlignment="textEnd"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+
             </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
 
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</RelativeLayout>

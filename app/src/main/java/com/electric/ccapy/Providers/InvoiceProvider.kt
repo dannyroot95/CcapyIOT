@@ -9,6 +9,7 @@ import com.electric.ccapy.Models.Users
 import com.electric.ccapy.UI.InvoiceActivity
 import com.electric.ccapy.Utils.Constants
 import com.electric.ccapy.Utils.Convert
+import com.electric.ccapy.Utils.CurrentDateTime
 import com.electric.ccapy.Utils.TinyDB
 import com.electric.ccapy.databinding.ActivityInvoiceBinding
 import com.google.firebase.database.DataSnapshot
@@ -19,6 +20,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -48,7 +50,12 @@ class InvoiceProvider {
                                     val sdfDate = SimpleDateFormat("dd/MM/yyyy hh:mm")
                                     val netDate = Date(System.currentTimeMillis())
                                     val myDate = sdfDate.format(netDate)
+                                    val calendar = Calendar.getInstance()
+                                    val month = calendar.get(Calendar.MONTH) + 1
+                                    val year = calendar.get(Calendar.YEAR)
+                                    val dateFormat = DateFormatSymbols().months[month - 1]
 
+                                    binding.ivMonthInvoice.text = dateFormat.toUpperCase(Locale.ROOT)+" "+year
                                     binding.txtDate.text = myDate
 
                                     binding.ivName.text = user.fullname
@@ -63,7 +70,7 @@ class InvoiceProvider {
                                     )
                                     //---------------------------------------------------------------
                                     binding.ivActualMed.text = config.actual_med_read+" kw/h"
-                                    binding.ivSensorMed.text = device.energy.toString()
+                                    binding.ivSensorMed.text = device.energy.toString()+" kw/h"
                                     binding.ivFactor.text = device.power_factor.toString()
 
                                     var energy = 0F
